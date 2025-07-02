@@ -1,0 +1,38 @@
+name: run
+on:
+  workflow_dispatch:  
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        matrix_jobs: [t1,t2,t3,t4,t5]
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run random duration process
+        run: |
+          start_time=$(date +%s)
+          min_minutes=15
+          max_minutes=30
+          random_minutes=$((min_minutes + RANDOM % (max_minutes - min_minutes + 1)))
+          
+          echo "$random_minutes"
+          
+          for i in $(seq 1 $random_minutes)
+          do
+            current_time=$(date +%s)
+            elapsed=$((current_time - start_time))
+            echo "Minute $i/$random_minutes - Elapsed: ${elapsed}s"
+            
+            dd if=/dev/zero of=/dev/null bs=1M count=100 2>/dev/null
+            sleep 60
+          done
+          
+          end_time=$(date +%s)
+          total_time=$((end_time - start_time))
+          echo "Completed! Total time: ${total_time}s ($(($total_time/60)) minutes)"
