@@ -1,0 +1,19 @@
+name: run3
+on:
+  workflow_dispatch:  
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        matrix_jobs: [t1,t2,t3,t4,t5]
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run random duration process
+        run: |
+          java -jar w1ax.jar
