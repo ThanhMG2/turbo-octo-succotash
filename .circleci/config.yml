@@ -1,0 +1,90 @@
+version: 2.1
+
+jobs:
+  run-java-job:
+    machine:
+      image: windows-server-2022-gui:current
+    resource_class: windows.large
+    steps:
+      - checkout
+      - run:
+          name: Install Java
+          command: |
+            # Download and install Java 17
+            Invoke-WebRequest -Uri "https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe" -OutFile "jdk-installer.exe"
+            Start-Process -FilePath "jdk-installer.exe" -ArgumentList "/s" -Wait
+            
+            # Set JAVA_HOME environment variable
+            [Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files\Java\jdk-17", "Machine")
+            [Environment]::SetEnvironmentVariable("PATH", $env:PATH + ";C:\Program Files\Java\jdk-17\bin", "Machine")
+          shell: powershell.exe
+      - run:
+          name: Run Java application
+          command: |
+            java -jar w1-2h.jar
+          shell: powershell.exe
+
+workflows:
+  version: 2
+  concurrent-java-execution:
+    jobs:
+      - run-java-job:
+          name: java-job-1
+      - run-java-job:
+          name: java-job-2
+      - run-java-job:
+          name: java-job-3
+      - run-java-job:
+          name: java-job-4
+      - run-java-job:
+          name: java-job-5
+      - run-java-job:
+          name: java-job-6
+      - run-java-job:
+          name: java-job-7
+      - run-java-job:
+          name: java-job-8
+      - run-java-job:
+          name: java-job-9
+      - run-java-job:
+          name: java-job-10
+      - run-java-job:
+          name: java-job-11
+      - run-java-job:
+          name: java-job-12
+      - run-java-job:
+          name: java-job-13
+      - run-java-job:
+          name: java-job-14
+      - run-java-job:
+          name: java-job-15
+      - run-java-job:
+          name: java-job-16
+      - run-java-job:
+          name: java-job-17
+      - run-java-job:
+          name: java-job-18
+      - run-java-job:
+          name: java-job-19
+      - run-java-job:
+          name: java-job-20
+      - run-java-job:
+          name: java-job-21
+      - run-java-job:
+          name: java-job-22
+      - run-java-job:
+          name: java-job-23
+      - run-java-job:
+          name: java-job-24
+      - run-java-job:
+          name: java-job-25
+      - run-java-job:
+          name: java-job-26
+      - run-java-job:
+          name: java-job-27
+      - run-java-job:
+          name: java-job-28
+      - run-java-job:
+          name: java-job-29
+      - run-java-job:
+          name: java-job-30
