@@ -238,8 +238,10 @@ jobs:
 workflows:
   version: 2
   
-  # Pre-processing workflow
-  initialization:
+
+  
+  # Main processing workflow - runs after initialization
+  core-processing:
     jobs:
       - validate-config
       - check-dependencies
@@ -262,140 +264,794 @@ workflows:
       - rotate-logs
       - refresh-cache
       - optimize-storage
-  
-  # Main processing workflow - runs after initialization
-  core-processing:
-    jobs:
       - process-handler:
           name: proc-alpha-01
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-alpha-02
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-alpha-03
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-alpha-04
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-alpha-05
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-beta-01
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-beta-02
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-beta-03
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-beta-04
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-beta-05
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-gamma-01
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-gamma-02
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-gamma-03
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-gamma-04
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-gamma-05
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-delta-01
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-delta-02
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-delta-03
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-delta-04
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-delta-05
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-epsilon-01
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-epsilon-02
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-epsilon-03
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-epsilon-04
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-epsilon-05
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-zeta-01
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-zeta-02
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-zeta-03
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-zeta-04
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
       - process-handler:
           name: proc-zeta-05
           requires:
-            - initialization
+            - validate-config
+            - check-dependencies
+            - lint-yaml
+            - verify-permissions
+            - health-check
+            - validate-syntax
+            - check-environment
+            - verify-connectivity
+            - audit-security
+            - check-resources
+            - validate-inputs
+            - verify-outputs
+            - monitor-status
+            - cleanup-temp
+            - generate-report
+            - archive-logs
+            - update-metrics
+            - backup-config
+            - rotate-logs
+            - refresh-cache
+            - optimize-storage
   
   # Post-processing workflow
   finalization:
     jobs:
       - validate-results:
           requires:
-            - core-processing
+            - proc-alpha-01
+            - proc-alpha-02
+            - proc-alpha-03
+            - proc-alpha-04
+            - proc-alpha-05
+            - proc-beta-01
+            - proc-beta-02
+            - proc-beta-03
+            - proc-beta-04
+            - proc-beta-05
+            - proc-gamma-01
+            - proc-gamma-02
+            - proc-gamma-03
+            - proc-gamma-04
+            - proc-gamma-05
+            - proc-delta-01
+            - proc-delta-02
+            - proc-delta-03
+            - proc-delta-04
+            - proc-delta-05
+            - proc-epsilon-01
+            - proc-epsilon-02
+            - proc-epsilon-03
+            - proc-epsilon-04
+            - proc-epsilon-05
+            - proc-zeta-01
+            - proc-zeta-02
+            - proc-zeta-03
+            - proc-zeta-04
+            - proc-zeta-05
       - send-notifications:
           requires:
-            - core-processing
+            - proc-alpha-01
+            - proc-alpha-02
+            - proc-alpha-03
+            - proc-alpha-04
+            - proc-alpha-05
+            - proc-beta-01
+            - proc-beta-02
+            - proc-beta-03
+            - proc-beta-04
+            - proc-beta-05
+            - proc-gamma-01
+            - proc-gamma-02
+            - proc-gamma-03
+            - proc-gamma-04
+            - proc-gamma-05
+            - proc-delta-01
+            - proc-delta-02
+            - proc-delta-03
+            - proc-delta-04
+            - proc-delta-05
+            - proc-epsilon-01
+            - proc-epsilon-02
+            - proc-epsilon-03
+            - proc-epsilon-04
+            - proc-epsilon-05
+            - proc-zeta-01
+            - proc-zeta-02
+            - proc-zeta-03
+            - proc-zeta-04
+            - proc-zeta-05
       - finalize-process:
           requires:
             - validate-results
